@@ -29,7 +29,7 @@ module.exports = function findMostCalorieElf(str) {
     if (isNaN(num)) {
       continue;
     }
-    num = Number(num);
+    num = parseInt(num, 10);
     if (curCal === -Infinity) {
       curCal = num;
     } else {
@@ -43,3 +43,4 @@ module.exports = function findMostCalorieElf(str) {
     return max;
   }
 };
+
