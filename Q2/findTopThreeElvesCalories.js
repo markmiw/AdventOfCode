@@ -43,8 +43,11 @@ module.exports = function findTopThreeElvesCalories(str, maxNumOfElves) {
       }
     }
   }
+
+  // check if last elf should be added to queue
   insert(queue, curCal);
 
+  // return sum
   return queue.reduce((a, b) => a + b);
 };
 
