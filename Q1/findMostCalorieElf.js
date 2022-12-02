@@ -3,6 +3,12 @@
 // Constraints - None
 // Edge Cases - Negative numbers/0's
 
+// Algorithm:
+// 1. Check if type is correct
+// 2. split stirng by new line
+// 3. Calculate each elf's calories and compare it to the max calorie elf
+// 4. If there are no "elves" then return -1
+
 
 module.exports = function findMostCalorieElf(str) {
   // make sure input is type string
@@ -10,8 +16,8 @@ module.exports = function findMostCalorieElf(str) {
     return -1;
   }
 
-  // remove white spaces but not line breaks /g means to replace all
-  str = str.replace(/ /g, '');
+  // // remove white spaces but not line breaks /g means to replace all
+  // str = str.replace(/ /g, '');
 
   // split by new lines
   const calories = str.split(`\n`);
@@ -20,16 +26,17 @@ module.exports = function findMostCalorieElf(str) {
   let max = -Infinity;
   let curCal = -Infinity;
 
+  // iterate each number and calculate each elf's calories
   for (let num of calories) {
     if (num === '') {
       max = Math.max(curCal, max);
       curCal = -Infinity;
       continue;
     }
+    num = parseInt(num, 10);
     if (isNaN(num)) {
       continue;
     }
-    num = parseInt(num, 10);
     if (curCal === -Infinity) {
       curCal = num;
     } else {
@@ -37,6 +44,7 @@ module.exports = function findMostCalorieElf(str) {
     }
   }
   max = Math.max(curCal, max);
+
   if (max === -Infinity) {
     return -1;
   } else {
